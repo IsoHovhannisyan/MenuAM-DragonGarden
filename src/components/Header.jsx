@@ -78,7 +78,7 @@ export  function Header({basket, setBasket, allBasketProducts, setAllBasketProdu
           <div>{allBasketProducts > 0 ? <div className="basketIcone"> <span className=" basketSpan">{allBasketProducts}</span></div>: <div className=" basketicone"></div>}</div>
         </div>
       </div>
-      <Link to={`/favorites/?allBasketProducts=${allBasketProducts}`}>
+      <Link to={`/favorites`}>
         <div className="Heart">
           <i className="fa-solid fa-heart"></i>
         </div>

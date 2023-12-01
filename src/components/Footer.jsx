@@ -15,7 +15,7 @@ export function Footer({label}) {
 
       <div>
       <h2 className=' font-bold pb-[.5rem]'>{label[0]?.footer?.[0]}</h2>
-      <p><a href="#">{label[0]?.footer?.[1]}լ</a></p>
+      <p><a href="#">{label[0]?.footer?.[1]}</a></p>
       </div>
 
       <div>

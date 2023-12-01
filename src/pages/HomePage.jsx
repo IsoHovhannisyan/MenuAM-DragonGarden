@@ -60,7 +60,7 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
   }
 
   const mealById = async(id)=>{
-    const Meal = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id);
+    const Meal = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id);
     setMeal(Meal.data);
   }
 
@@ -92,24 +92,24 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
     let id2 = 0;
     if(id <=47){
         if(product.favorite == 'false'){
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
             ...product,
             "favorite": "true"
         });
         id2 = id + 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id2,{
+        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
             ...FavMealOnLangChange.data,
             "favorite": "true"
         })
         }else{
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
             ...product,
             "favorite": "false"
         });
         id2 = id + 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+id2,{
+        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
             ...FavMealOnLangChange.data,
             "favorite": "false"
         });
@@ -118,24 +118,24 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
     }
     else{
         if(product.favorite == 'false'){
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
             ...product,
             "favorite": "true"
         });
         id2 = id - 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id2,{
+        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
             ...FavMealOnLangChange.data,
             "favorite": "true"
         })
         }else{
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
             ...product,
             "favorite": "false"
         });
         id2 = id - 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+id2,{
+        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
             ...FavMealOnLangChange.data,
             "favorite": "false"
         });

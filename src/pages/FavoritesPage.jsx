@@ -22,25 +22,25 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
     const dislikeFunc = async(id, product)=>{
         let id2 = 0;
         if(id<=47){
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
                 ...product,
                 "favorite": "false"
             })
             id2=id+47;
-            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+id2,{
+            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
                 ...FavMealOnLangChange.data,
                 "favorite": "false"
             });
         }
         else{
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
                 ...product,
                 "favorite": "false"
             })
             id2=id-47;
-            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+id2,{
+            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
                 ...FavMealOnLangChange.data,
                 "favorite": "false"
             });
@@ -52,7 +52,7 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
     }
 
     const favoriteMealDetail = async(id)=>{
-        const FavMeal = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id);
+        const FavMeal = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id);
         setFavoriteMeal(FavMeal.data);
     }
 

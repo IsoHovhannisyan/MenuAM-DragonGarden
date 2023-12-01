@@ -1,0 +1,227 @@
+
+
+.Header{
+    background-color: var(--lightgrey);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    padding: 0 10rem;
+    top: 0; left: 0; width: 100%; 
+    height: 3rem;  
+   
+    
+}
+
+.Header .left{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.Header .left .Logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header .left .Headerinput{
+    padding: .3rem;
+    font-size: .9rem;
+    border-radius: .2rem;
+    width: 60%;  
+}
+
+.Header .left .Headerinput::placeholder{
+    padding: 0;
+    font-size: .9rem;
+}
+
+.Header .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+.Header .right .entrance{
+    color: var(--lightred);
+    font-weight: bold;
+    font-size: .9rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.Header .right .register, .Basket, .Heart{
+    background-color: var(--lightred);
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    color: var(--white);
+    font-weight: bold;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.Header .right .Basket .basketIcone{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: .6rem;
+    background-color: var(--white);
+    color: var(--lightred);
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+
+}
+
+.Header .right .Basket .basketIcone .basketSpan{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.Header .right .BasketShow{
+    box-shadow: 3px 4px 3px grey;
+}
+
+.Header .right .BasketShow .Products {
+    scrollbar-gutter: stable;
+}
+
+.Header .right .BasketShow .Products .box{
+    border-bottom:  .7px solid rgb(212, 212, 212);
+    padding: .5rem 0;
+}
+
+.Header .right .BasketShow .Total{
+    border-top: 1px solid rgb(167, 165, 165);
+    padding: .3rem 1rem;
+}
+
+.Header .right .BasketShow .Total button{
+    background-color: var(--lightred);
+    color: var(--white);
+    border-radius: .7rem;
+    padding: .3rem;
+    margin-top: .4rem;
+    width: 70%;
+}
+
+.Header .right .BasketShow .box .image i:hover {
+    color: var(--lightred);
+    background-color: rgb(237, 236, 236);
+}
+
+.Header .right .BasketIcon i{
+    color: grey;
+    font-size: 5rem;
+}
+
+
+.SelectLanguage {
+    display: flex;
+    align-items: center;
+    background: var(--lightred);
+    user-select: none;
+    position: relative;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    color: var(--white);
+    font-weight: bold;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.SelectLanguage i{
+    color: var(--white);
+    margin-left: 5px;
+}
+
+.SelectLanguage .selectedLanguage {
+    font-weight: 700;
+    color: white;
+}
+
+
+.SelectLanguage .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: rgb(242, 242, 242);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    border-radius: .5rem;
+}
+
+.SelectLanguage .dropdown .selectedLanguage {
+    padding: 3px 0;
+    color: var(--lightred);
+    
+}
+
+.SelectLanguage .dropdown .selectedLanguage:hover {
+    background-color: var(--lightred);
+    color: var(--white);
+    border-radius: .7rem;
+}
+
+.SelectLanguage .dropdown.activeSelectLang {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+
+@media (max-width: 1200px){
+    .Header{
+        display: block;
+        height: 7rem;
+        padding: 1rem 0;
+    }
+
+    .Header .left{
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        width: 100%;
+
+    }
+
+    .Header .left .Headerinput{
+        width: 50%;
+        padding-left: .5rem;
+    }
+
+    .Header .right {
+        display: flex;
+       justify-content: center;
+        gap: 2rem;
+
+    }
+
+    .Header .right .BasketShow{
+        top: 8rem; right: 2rem;
+    }
+   
+   
+}
+
+
+
+@media (max-width: 600px){
+  
+
+
+    .Header .left .Headerinput::placeholder{
+       font-size: .7rem; 
+       
+    }
+
+   
+}
+
+

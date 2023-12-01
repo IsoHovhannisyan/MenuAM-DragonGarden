@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    border: none; outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+
+}
+
+:root{
+    --red:#c5022e;
+    --lightred:#ea1f4d;
+    --lightgrey:rgb(235, 229, 229);
+    --white:#fff;
+}
+
+html,
+body{
+
+    scrollbar-gutter: stable;
+    background-color: #F9F9FB;
+
+}
+
+.fa-solid.fa-heart{
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.favorites{
+    color:  var(--lightred);
+    cursor: pointer;
+}

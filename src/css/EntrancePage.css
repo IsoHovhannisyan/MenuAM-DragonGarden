@@ -1,0 +1,104 @@
+
+body{
+    background: white;  
+}
+
+.entrance{
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+}
+.entrance .burgerpicture{
+    width: 45%;
+}
+
+.entrance .burger-img{
+    width: 450px;
+}
+
+.entrance .form {
+    width: 30%;
+    margin-top: 2rem;
+}
+
+.entrance .form .logo{
+    max-height: 2rem;
+}
+
+.entrance .form .logo img{
+
+    height: 1.3rem;
+}
+
+.entrance .form input::placeholder{
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.entrance .form .continue{
+    display: flex;
+    margin: 1rem;
+    color: rgb(177, 177, 177);
+}
+
+.entrance .form .solid{
+    border-top: 1px solid rgb(177, 177, 177);
+    transform: translateY(51%);
+    width: 50%;
+}
+
+.entrance .form a{
+    margin-bottom: 1.5rem;
+}
+
+.entrance .form .robot{
+    padding: .5rem;
+    background-color: rgb(230, 230, 230);
+    width: 40%;
+    margin-top: .5rem;
+}
+
+@media (max-width: 1200px){
+    .entrance .form .robot{
+        width: 60%;
+    }
+}
+
+@media (max-width: 850px){
+
+
+    .entrance .burgerpicture .burger-img{
+        height: 40rem;
+
+    }
+
+    .entrance .form{
+        width: 50%;
+
+    }
+}
+
+@media (max-width: 700px){
+    .entrance .burgerpicture .burger-img{
+        height: 35rem;
+    }
+
+    .entrance .form .continue p{
+        font-size: .7rem;
+    }
+}
+
+@media (max-width: 550px){
+
+
+    .entrance .form{
+        margin-right: 10rem;
+    }
+
+    .entrance .burgerpicture img{
+     display: none;
+
+    }
+
+}
+

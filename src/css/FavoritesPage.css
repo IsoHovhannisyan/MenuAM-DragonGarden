@@ -1,0 +1,150 @@
+
+.FavEmpty .favH2{
+    color: var(--red);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 3rem 0;
+}
+
+.FavEmpty .LinkDiv {
+    background-color: var(--red);
+    width: 20%;
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+}
+
+.FavEmpty .LinkDiv .btn{
+    font-size: .9rem;
+    padding: .3rem;
+    color: white ;
+    background-color: var(--red);
+}
+
+.heading{
+    color: var(--red);
+    font-weight: 700;
+    margin: 1rem 15% ;
+}
+
+
+
+.FavoriteMeals {
+    width: 100%;
+    padding: 1% 15%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 2rem;
+    
+}
+
+.FavoriteMeals .Meal {
+    box-shadow: 0 0 1px;
+    border-radius: .5rem;
+    position: relative;
+    height: 240px;
+    width: 15%;
+}
+
+
+.FavoriteMeals .Meal .image{
+    width: 100%;
+}
+.FavoriteMeals .Meal .image img{
+    width: 100%;
+    border-radius: .5rem; 
+}
+
+
+.FavoriteMeals .Meal .title{
+    font-size: 11px;
+    padding:  .2rem .5rem;
+}
+
+.FavoriteMeals .Meal .PriceAndIcons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    bottom: .5rem;
+    padding: 0 .5rem;
+}
+
+.FavoriteMeals .Meal .PriceAndIcons .price{
+    font-weight: 500;
+    font-size: .7rem;
+}
+
+.FavoriteMeals .Meal .PriceAndIcons .icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.FavoriteMeals .Meal .PriceAndIcons .icons i{
+    margin-right: .3rem;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.FavoriteMeals .Meal .PriceAndIcons .icons .fa-solid.fa-heart{
+    font-size: 1rem;
+}
+
+.FavoriteMeals .Meal .PriceAndIcons .icons .favorites{
+    color:  var(--red);
+}
+
+@media (max-width: 1300px){
+    .FavoriteMeals .Meal{
+        width: 14%;
+        height: 210px;
+    }
+}
+
+
+@media (max-width: 1200px){
+    .FavoriteMeals .Meal{
+        width: 23%;
+        height: 250px;
+    }
+}
+
+@media (max-width: 1090px){
+    .FavoriteMeals .Meal{
+        width: 22%;
+        height: 220px;
+    }
+}
+
+@media (max-width: 930px){
+    .FavoriteMeals .Meal{
+        width: 30%;
+        height: 250px;
+    }
+}
+
+@media (max-width: 800px){
+    .FavoriteMeals .Meal{
+        height: 220px;
+    }
+}
+
+@media (max-width: 650px){
+    .FavoriteMeals .Meal{
+        width: 45%;
+        height: 250px;
+    }
+}
+
+@media (max-width: 550px){
+    .FavoriteMeals .Meal{
+        height: 220px;
+    }
+}
+
+

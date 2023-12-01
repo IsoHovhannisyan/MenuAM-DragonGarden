@@ -1,0 +1,48 @@
+
+
+@media (max-width: 1210px){
+
+    .Footer .social .picture{
+       display: flex;
+       flex-direction: column;
+    }
+      
+   }
+   
+   @media (max-width: 950px){
+   
+       .Footer{
+           height: auto;
+       }
+   
+       .Footer .clients{
+           display: flex;
+           flex-wrap: wrap;
+           gap: 3rem;
+       }
+     
+       .Footer .social{
+           display: flex;
+           flex-wrap: wrap;
+           gap: 2rem;
+         
+       }
+         
+      
+      }
+   
+      @media (max-width: 650px){
+   
+       .Footer .social{
+           gap: 4rem;
+   
+       }
+      }
+   
+      @media (max-width: 510px){
+   
+       .Footer .social .picture .pic{
+           display: none;
+   
+       }
+      }

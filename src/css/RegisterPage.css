@@ -1,0 +1,116 @@
+
+.register{
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+}
+.register .burgerpicture{
+    width: 45%;
+}
+
+.register .burger-img{
+    width: 450px;
+}
+
+.register .form {
+    width: 30%;
+    margin-top: 2rem;
+}
+
+.register .form .logo{
+    max-height: 2rem;
+}
+
+.register .form .logo img{
+
+    height: 1.3rem;
+}
+
+.register .form input::placeholder{
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.register .form .continue{
+    display: flex;
+    margin: 1rem;
+    color: rgb(177, 177, 177);
+}
+
+.register .form .continue .solid{
+    border-top: 1px solid rgb(177, 177, 177);
+    transform: translateY(51%);
+    width: 50%;
+}
+
+.register .form a{
+    margin-bottom: 1.5rem;
+}
+
+.register .form .robot{
+    padding: .5rem;
+    background-color: rgb(230, 230, 230);
+    width: 40%;
+    margin-top: .5rem;
+}
+
+@media (max-width: 1200px){
+    .register .form .robot{
+        width: 60%;
+    }
+}
+
+@media (max-width: 850px){
+
+
+    .register .burgerpicture .burger-img{
+        height: 40rem;
+
+    }
+
+    .register .form{
+        width: 50%;
+
+    }
+}
+
+@media (max-width: 700px){
+
+    .register .burgerpicture{
+        width: 53%;
+    }
+    .register .form{
+        width: 40%;
+    }
+
+    .register .burgerpicture .burger-img{
+        height: 40rem;
+    }
+
+    .register .form .continue .solid{
+        width: 40%;
+    }
+
+    .register .form .continue p{
+        font-size: .6rem;
+    }
+    .register .form .robot{
+        width: 90%;
+    }
+    
+    
+}
+
+@media (max-width: 550px){
+
+
+    .register .form{
+        margin-right: 10rem;
+    }
+
+    .register .burgerpicture img{
+     display: none;
+
+    }
+
+}

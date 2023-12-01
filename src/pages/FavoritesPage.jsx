@@ -22,25 +22,25 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
     const dislikeFunc = async(id, product)=>{
         let id2 = 0;
         if(id<=47){
-            await axios.put('http://localhost:3000/meals/'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
                 ...product,
                 "favorite": "false"
             })
             id2=id+47;
-            const FavMealOnLangChange = await axios.get('http://localhost:3000/meals/'+ id2);
-            await axios.put('http://localhost:3000/meals/'+id2,{
+            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+id2,{
                 ...FavMealOnLangChange.data,
                 "favorite": "false"
             });
         }
         else{
-            await axios.put('http://localhost:3000/meals/'+ id, {
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+ id, {
                 ...product,
                 "favorite": "false"
             })
             id2=id-47;
-            const FavMealOnLangChange = await axios.get('http://localhost:3000/meals/'+ id2);
-            await axios.put('http://localhost:3000/meals/'+id2,{
+            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id2);
+            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals'+id2,{
                 ...FavMealOnLangChange.data,
                 "favorite": "false"
             });
@@ -52,12 +52,12 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
     }
 
     const favoriteMealDetail = async(id)=>{
-        const FavMeal = await axios.get('http://localhost:3000/meals/'+ id);
+        const FavMeal = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals'+ id);
         setFavoriteMeal(FavMeal.data);
     }
 
     const loadingFavoriteMeals = async()=>{
-        const FavMeals = await axios.get('http://localhost:3000/meals');
+        const FavMeals = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals');
         setFavoriteMeals(FavMeals.data.filter(el => el.favorite === 'true' && el.lang == currentLanguage));
     }
 

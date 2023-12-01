@@ -4,7 +4,7 @@ import { SelectLanguage } from "./SelectLanguage";
 import logoPNG from '../images/logo.png'
 import '../css/Header.css';
 
-export  function Header({basket, setBasket, allBasketProducts, setAllBasketProducts,label}) {
+export  function Header({basket, setBasket, allBasketProducts, setAllBasketProducts,label, currentLanguage}) {
 
   const basketRef = useRef(null);
   const [showBasket, setShowBasket]=useState(false);
@@ -85,7 +85,7 @@ export  function Header({basket, setBasket, allBasketProducts, setAllBasketProdu
 
       </Link>
       <div className="">
-        <SelectLanguage />
+        <SelectLanguage currentLanguage={currentLanguage} />
       </div>
       
          

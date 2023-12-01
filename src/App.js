@@ -34,7 +34,7 @@ export function App() {
 
   return (
     <div className="App">
-      <Header basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label} />
+      <Header currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label} />
       <Routes>
         <Route path='/' element={<HomePage currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/>}/>
         <Route path='/entrance' element={<EntrancePage currentLanguage={currentLanguage} label={label}/>} />

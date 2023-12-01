@@ -198,7 +198,8 @@
 
     .Header .right {
         display: flex;
-       justify-content: center;
+        justify-content: center;
+        width: 100%;
         gap: 2rem;
 
     }
@@ -213,8 +214,33 @@
 
 
 @media (max-width: 600px){
-  
+    .Header{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 8rem;
+    }
 
+    .Header .left .Headerinput{
+        display: none;
+    }
+    .Header .right {
+        justify-content: left;
+        padding-left: 1rem;
+    }
+
+    .Header .right .entrance, .register{
+        position: absolute;
+    }
+
+    .Header .right .entrance {
+        right: 7rem;
+    }
+
+    .Header .right .register {
+        right: 1rem;
+    }
 
     .Header .left .Headerinput::placeholder{
        font-size: .7rem; 

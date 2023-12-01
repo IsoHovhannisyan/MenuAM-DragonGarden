@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 export function SelectLanguage({currentLanguage}) {
-    const currentLanguage = localStorage.getItem('menu-Language');
     const [showSelector, setShowSelector] = useState(false);
 
     const onChangeSelect = (e) => {

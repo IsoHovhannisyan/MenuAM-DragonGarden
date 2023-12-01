@@ -52,7 +52,7 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
   })
 
   const loadingMeals = async()=> {
-      const MealsData = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals');
+      const MealsData = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/');
       const MealsLang = MealsData.data.filter(el => el.lang === currentLanguage && el.category !== 'Label')
       setMeals(MealsLang);
 

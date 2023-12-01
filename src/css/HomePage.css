@@ -173,12 +173,18 @@
 }
 
 @media (max-width: 750px){
+
+    .homePageImg {
+        height: 6rem;
+        
+    }
+
     .Homepage{
         margin: 1% 7%;
     }
 
     .Homepage .Left {
-        width: 45%;
+        width: 37%;
     }
 
     .Homepage .Components{
@@ -198,9 +204,17 @@
 } */
 
 
-/* @media (max-width: 550px){
-    .Homepage .Left{
-        width: 40%;
+@media (max-width: 550px){
+    .Homepage {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
-} */
+    .Homepage .Left {
+        width: 80%;
+    }
+    .Homepage .Components{
+        width: 100%;
+    }
+}
 

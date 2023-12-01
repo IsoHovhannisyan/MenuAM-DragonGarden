@@ -205,7 +205,7 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
 
   return (
     <div>
-     <img src={PictureJpg} alt=""/>
+     <img src={PictureJpg} alt="" className='homePageImg'/>
      <div className='Homepage'>
                 
                 <div className='Left'>

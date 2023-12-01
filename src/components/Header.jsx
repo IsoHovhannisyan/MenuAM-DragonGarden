@@ -84,7 +84,7 @@ export  function Header({basket, setBasket, allBasketProducts, setAllBasketProdu
         </div>
 
       </Link>
-      <div className="">
+      <div className="selectLanguage">
         <SelectLanguage currentLanguage={currentLanguage} />
       </div>
       

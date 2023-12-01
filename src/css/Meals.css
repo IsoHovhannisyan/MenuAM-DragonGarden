@@ -103,7 +103,7 @@
 
 @media (max-width: 750px){
     .Meals .Meal{
-      
+        width: 35%;
         height: 210px;
     }
 }
@@ -123,24 +123,36 @@
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 550px){
 
   
     .Meals .Meal{
-      
-        height: 280px;
-        width: 99%;
-        
-
+        height: 190px;
+        width: 29%;
     }
 
     .Meals .Meal .title{
       
-      font-size: 1rem;
+      font-size: .7rem;
         
     }
 
     .Meals .Meal .PriceAndIcons .price{
+        font-size: .7rem;
+    }
+
+    .Meals .Meal .PriceAndIcons .icons i{
+        font-size: .7rem;
+        margin-right: .1rem;
+    }
+
+    /* .Meals .Meal .PriceAndIcons .price{
         font-size: 1rem;
+    } */
+}
+
+@media (max-width: 450px){
+    .Meals .Meal{
+        height: 175px;
     }
 }

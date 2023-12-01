@@ -21,7 +21,7 @@ export function App() {
 
 
   const loadingLabel = async()=>{
-    const All = await axios.get('http://localhost:3000/meals');
+    const All = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals');
     const Label = All.data.filter(el=> el.category == 'Label' && el.lang == currentLanguage);
     setLabel(Label);
 

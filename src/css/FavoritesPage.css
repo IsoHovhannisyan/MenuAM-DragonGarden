@@ -102,6 +102,12 @@
 
 
 @media (max-width: 3000px){
+    .FavoritesPageImg1{
+        width: 100%;
+    }
+    .FavoritesPageImg2{
+        width: 100%;
+    }
     .FavoriteMeals .Meal{
         height: 360px;
     }

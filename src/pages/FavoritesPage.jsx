@@ -124,10 +124,10 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
 
   return (
     <div>
-        <img src={img1} alt=""/>
+        <img src={img1} alt="" className='FavoritesPageImg1'/>
         {favoriteMeals == '' ? <div className='FavEmpty transition-none'>
             <h2 className='favH2'>{label[0]?.favorites?.[0]}</h2>
-            <img src={favoritePNG} alt="" />
+            <img src={favoritePNG} alt="" className='FavoritesPageImg2' />
             <div className=' flex justify-center items-center'>
                 <div className='LinkDiv' onClick={()=> navigate('/')}>
                      <button className='btn'>{label[0]?.favorites?.[1]}</button>

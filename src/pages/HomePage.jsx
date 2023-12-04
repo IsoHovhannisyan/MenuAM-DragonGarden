@@ -45,7 +45,7 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
       loadingMeals();
       DisabledScroll();
       window.addEventListener("mousedown", handleClickOutSide);
-  },[]);
+  },[showDetail]);
 
   const loadingMeals = async()=> {
     if(!JSON.parse(localStorage.getItem('meals'))){

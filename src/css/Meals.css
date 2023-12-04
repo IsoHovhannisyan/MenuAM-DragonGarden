@@ -107,7 +107,7 @@
 
 @media (max-width: 1200px){
     .Meals .Meal{
-        height: 190px;
+        height: 200px;
         width: 21%;
     }
 
@@ -120,8 +120,6 @@
 
   
     .Meals .Meal{
-      
-        height: 190px;
         width: 28%;
     }
 }

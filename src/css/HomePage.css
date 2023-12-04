@@ -1,3 +1,6 @@
+.Homepage .homePageImg{
+    width: 100%;
+}
 
 .Homepage {
     display: flex;
@@ -216,5 +219,49 @@
     .Homepage .Components{
         width: 100%;
     }
+
+    .Homepage .Left .Category .Categories{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* gap: 5rem; */
+        max-width: 100%;
+        overflow: auto;
+        padding-bottom: .5rem;
+    }
+
+    .Homepage .Left .Category .Categories button {
+        margin-left: 2rem;
+        text-align: left;
+        width: 5rem;
+    }
+
+    .Homepage .Left .Category .Categories .btn-color.btnForMediaPhone{
+        margin-left: 22rem;
+    }
+
+    .Homepage .Left .Category .Categories .btn.btnForMediaPhone{
+        margin-left: 22rem;
+    }
+
 }
 
+@media (max-width: 470px){
+    .Homepage .Left .Category .Categories .btn-color.btnForMediaPhone{
+        margin-left: 24rem;
+    }
+
+    .Homepage .Left .Category .Categories .btn.btnForMediaPhone{
+        margin-left: 24rem;
+    }
+}
+
+@media (max-width: 425px){
+    .Homepage .Left .Category .Categories .btn-color.btnForMediaPhone{
+        margin-left: 26rem;
+    }
+
+    .Homepage .Left .Category .Categories .btn.btnForMediaPhone{
+        margin-left: 26rem;
+    }
+}

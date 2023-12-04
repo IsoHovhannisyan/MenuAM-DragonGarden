@@ -9,56 +9,58 @@ import DragonJpeg from '../images/dragon.jpeg';
 export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProducts, setAllBasketProducts, label}) {
 
     const [favoriteMeals, setFavoriteMeals] = useState([]);
+    const [localStorageFavoriteMeals,setLocalStorageFavoriteMeals] = useState([]);
     const [favoriteMeal, setFavoriteMeal] = useState({});
     const [showDetail, setShowDetail]= useState(false);
     const [quantity, setQuantity] = useState(1);
     const detailRef = useRef(null);
     const navigate = useNavigate();
 
+
     
 
     let mealPrice = +(favoriteMeal?.price?.split(`${favoriteMeal?.price?.[favoriteMeal?.price?.length-1]}`)[0]);
 
-    const dislikeFunc = async(id, product)=>{
-        let id2 = 0;
-        if(id<=47){
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-                ...product,
-                "favorite": "false"
+    const loadingFavoriteMeals = ()=>{
+        let favMeals = JSON.parse(localStorage.getItem("meals"));
+        setLocalStorageFavoriteMeals(favMeals);
+        setFavoriteMeals(favMeals.filter(el => el.favorite === "true" && el.lang == currentLanguage));
+    }
+
+    const dislikeFunc = (product)=>{
+        let favoriteMealAnotherLangID = 0;
+        if(product.id<=47){
+            favoriteMealAnotherLangID = product.id + 47;
+            let favoriteMealById = localStorageFavoriteMeals.map(el=> {
+                if(product.id === el.id || favoriteMealAnotherLangID === el.id){
+                    el.favorite = false;
+                    return el
+                }
+                return el
             })
-            id2=id+47;
-            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
-                ...FavMealOnLangChange.data,
-                "favorite": "false"
-            });
-        }
-        else{
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-                ...product,
-                "favorite": "false"
+            localStorage.setItem("meals", JSON.stringify(favoriteMealById));
+        }else{
+            let favoriteMealAnotherLangID = product.id - 47;
+            let favoriteMealById = localStorageFavoriteMeals.map(el=> {
+                if(product.id === el.id || favoriteMealAnotherLangID === el.id){
+                    el.favorite = false;
+                    return el
+                }
+                return el
             })
-            id2=id-47;
-            const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
-                ...FavMealOnLangChange.data,
-                "favorite": "false"
-            });
+            localStorage.setItem("meals", JSON.stringify(favoriteMealById));
         }
+        
+        
 
         setShowDetail(false);
-        const filteredFavoriteMeals = favoriteMeals.filter(el => el.id !== id);
+        const filteredFavoriteMeals = favoriteMeals.filter(el => el.id !== product.id);
         setFavoriteMeals(filteredFavoriteMeals);
     }
 
     const favoriteMealDetail = async(id)=>{
-        const FavMeal = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id);
-        setFavoriteMeal(FavMeal.data);
-    }
-
-    const loadingFavoriteMeals = async()=>{
-        const FavMeals = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals');
-        setFavoriteMeals(FavMeals.data.filter(el => el.favorite === 'true' && el.lang == currentLanguage));
+        const FavMeal = favoriteMeals.filter(el=> el.id === id);
+        setFavoriteMeal(FavMeal[0]);
     }
 
     useEffect(()=> {
@@ -152,7 +154,7 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
                         </div>
 
                         <div className='icons'>
-                            <i onClick={()=> dislikeFunc(el.id, el)}  className={ el.favorite !== 'false'  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
+                            <i onClick={()=> dislikeFunc(el)}  className={ el.favorite === "true"  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
                             <i className="fa-solid fa-cart-shopping" onClick={()=> addToBasket(el) }></i>
                         </div>
     
@@ -172,7 +174,7 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
                 </div>
 
                 <div className='dragonIcons'>
-                <i onClick={()=>dislikeFunc(favoriteMeal.id, favoriteMeal)} className={ favoriteMeal.favorite !== 'false'  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
+                <i onClick={()=>dislikeFunc(favoriteMeal)} className={ favoriteMeal.favorite === 'true'  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
                     <i className="fa-solid fa-xmark cursor-pointer" onClick={()=>setShowDetail(!showDetail)}></i>
                 </div>
             </div>

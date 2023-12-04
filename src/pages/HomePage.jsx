@@ -17,16 +17,22 @@ import Detail from '../components/Detail';
 export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts, setAllBasketProducts, label}) {
 
   const [meals, setMeals] = useState([]);
-  const [meal, setMeal] = useState({});
+  const [meal, setMeal] = useState([]);
   const [filteredMeals, setfilteredMeals] = useState([]);
   const [filteredSearchMeals, setFilteredSearchMeals] = useState([]);
-  const [searchValue, setSearchValue]= useState('');
+  const [localStorageAllMeals, setLocalStorageAllMeals] = useState([]);
+  const [categoryName, setCategoryName] = useState('');
+  const [mealId, setMealId] = useState('');
   const [notFoundValue, setNotFoundValue] = useState('');
   const [toggle, setToggle] = useState(1);
   const [showDetail, setShowDetail] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [categoryName, setCategoryName] = useState('');
   const detailRef = useRef();
+
+  console.log(localStorageAllMeals[0]?.favorite);
+
+
+
   
   let mealPrice = +(meal?.price?.split(`${meal?.price?.[meal?.price?.length-1]}`)[0]);
 
@@ -39,29 +45,31 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
       loadingMeals();
       DisabledScroll();
       window.addEventListener("mousedown", handleClickOutSide);
-  },[showDetail]);
-
-  useEffect(()=>{
-    const interval = setInterval(() => {
-        searchMeal(searchValue);
-        MealByCategory(categoryName);
-    }, 50);
-
-    return () => clearInterval(interval);
-
-  })
+  },[]);
 
   const loadingMeals = async()=> {
-      const MealsData = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/');
-      const MealsLang = MealsData.data.filter(el => el.lang === currentLanguage && el.category !== 'Label')
-      setMeals(MealsLang);
-
-      
+    if(!JSON.parse(localStorage.getItem('meals'))){
+        const MealsData = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/');
+        const LocalStorageMeals = await MealsData.data.filter(el => el.category !== 'Label')
+        setLocalStorageAllMeals(LocalStorageMeals);
+        const localStorageMealsbyLang = LocalStorageMeals.filter(el => el.lang === currentLanguage);
+        setMeals(localStorageMealsbyLang);
+        setFilteredSearchMeals(localStorageMealsbyLang)
+        localStorage.setItem("meals", JSON.stringify(LocalStorageMeals));
+    }
+    else{
+        const localStorageMeals = JSON.parse(localStorage.getItem('meals'));
+        const localStorageMealsbyLang = localStorageMeals.filter(el => el.lang === currentLanguage);
+        setLocalStorageAllMeals(localStorageMeals);
+        setMeals(localStorageMealsbyLang);
+        setFilteredSearchMeals(localStorageMealsbyLang);
+    }
   }
 
-  const mealById = async(id)=>{
-    const Meal = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id);
-    setMeal(Meal.data);
+  const mealById = (id)=>{
+    let Meal = meals.filter(el => el.id == id);
+    setMeal(Meal[0]);
+    setMealId(id);
   }
 
   const MealByCategory = (name)=> {
@@ -74,7 +82,6 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
             setNotFoundValue('')
             const SearchMeal = meals.filter(el => el.category.toLowerCase().includes(value.toLowerCase()));
             setFilteredSearchMeals(SearchMeal);
-            setSearchValue(value);
             if(SearchMeal.length === 0){
                 if(currentLanguage == 'en')
                 setNotFoundValue('0 results for ' + '"' + value.toUpperCase() + '"');
@@ -88,65 +95,120 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
 
 
 
-  const favoriteMeal = async(id, product)=>{
-    let id2 = 0;
-    if(id <=47){
-        if(product.favorite == 'false'){
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-            ...product,
-            "favorite": "true"
-        });
-        id2 = id + 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
-            ...FavMealOnLangChange.data,
-            "favorite": "true"
-        })
-        }else{
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-            ...product,
-            "favorite": "false"
-        });
-        id2 = id + 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
-            ...FavMealOnLangChange.data,
-            "favorite": "false"
-        });
+//   const favoriteMeal = async(id, product)=>{
+//     let id2 = 0;
+//     if(id <=47){
+//         if(product.favorite == 'false'){
+//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
+//             ...product,
+//             "favorite": "true"
+//         });
+//         id2 = id + 47;
+//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
+//             ...FavMealOnLangChange.data,
+//             "favorite": "true"
+//         })
+//         }else{
+//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
+//             ...product,
+//             "favorite": "false"
+//         });
+//         id2 = id + 47;
+//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
+//             ...FavMealOnLangChange.data,
+//             "favorite": "false"
+//         });
         
-        }
-    }
-    else{
-        if(product.favorite == 'false'){
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-            ...product,
-            "favorite": "true"
-        });
-        id2 = id - 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
-            ...FavMealOnLangChange.data,
-            "favorite": "true"
-        })
-        }else{
-            await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-            ...product,
-            "favorite": "false"
-        });
-        id2 = id - 47;
-        const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-        await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
-            ...FavMealOnLangChange.data,
-            "favorite": "false"
-        });
+//         }
+//     }
+//     else{
+//         if(product.favorite == 'false'){
+//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
+//             ...product,
+//             "favorite": "true"
+//         });
+//         id2 = id - 47;
+//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
+//             ...FavMealOnLangChange.data,
+//             "favorite": "true"
+//         })
+//         }else{
+//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
+//             ...product,
+//             "favorite": "false"
+//         });
+//         id2 = id - 47;
+//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
+//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
+//             ...FavMealOnLangChange.data,
+//             "favorite": "false"
+//         });
         
-        }
-    }
+//         }
+//     }
 
-    loadingMeals();
-    mealById(id);
+//     loadingMeals();
+//     mealById(id);
     
+// }
+
+const favoriteMeal = (product)=>{
+    let favoriteMealAnotherLangID = 0;
+    if(product.id <= 47){
+        favoriteMealAnotherLangID = product.id + 47;
+        if(product.favorite === "false"){
+            let favoriteMealById = localStorageAllMeals.map(el=> {
+                if(product.id === el.id || favoriteMealAnotherLangID === el.id){
+                    el.favorite = "true";
+                    return el
+                }
+                return el
+            })
+            setLocalStorageAllMeals(favoriteMealById);
+        }
+        else{
+            let favoriteMealById = localStorageAllMeals.map(el=> {
+                if(product.id === el.id || favoriteMealAnotherLangID === el.id){
+                    el?.favorite = "false";
+                    return el
+                }
+                return el
+            })
+            setLocalStorageAllMeals(favoriteMealById);  
+        }
+    }else{
+        favoriteMealAnotherLangID = product.id - 47;
+        if(product.favorite === "false"){
+            let favoriteMealById = localStorageAllMeals.map(el=> {
+                if(product.id === el.id || favoriteMealAnotherLangID === el.id){
+                    el.favorite = "true";
+                    return el
+                }
+                return el
+            })
+            setLocalStorageAllMeals(favoriteMealById);
+        }
+        else{
+            let favoriteMealById = localStorageAllMeals.map(el=> {
+                if(product.id === el.id || favoriteMealAnotherLangID === el.id){
+                    el.favorite = "false";
+                    return el
+                }
+                return el
+            })
+            setLocalStorageAllMeals(favoriteMealById);  
+        }
+    }
+    localStorage.setItem("meals", JSON.stringify(localStorageAllMeals))
+    loadingMeals();
+    MealByCategory(categoryName)
+    mealById(mealId);
 }
+
+
 
   const DisabledScroll = ()=>{
     if(showDetail) {
@@ -239,19 +301,22 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
                              onChange={(e)=> searchMeal(e.target.value)}
                              />
                         </div>
-                        <div>
-                            <button onClick={()=> setToggle(1)} className={toggle === 1 ? 'btn-color': 'btn'}>{label[0]?.homepPageCategory?.[0]} </button>
+                        <div className='Categories'>
+                            <div>
+                                <button onClick={()=> setToggle(1)} className={toggle === 1 ? 'btn-color btnForMediaPhone': 'btn btnForMediaPhone'}>{label[0]?.homepPageCategory?.[0]} </button>
+                            </div>
+                            {
+                                categoriesArr.map((el, index) => <div key={index} >
+                                    <button value={el} className={toggle === index+2 ? 'btn-color': 'btn'} onClick={(e)=> {
+                                    setToggle(index+2);
+                                    MealByCategory(e.target.value);
+                                    }}> 
+                                    {el}
+                                    </button>
+                                </div>)
+                            }
                         </div>
-                        {
-                            categoriesArr.map((el, index) => <div key={index} >
-                                <button value={el} className={toggle === index+2 ? 'btn-color': 'btn'} onClick={(e)=> {
-                                setToggle(index+2);
-                                MealByCategory(e.target.value);
-                                }}> 
-                                {el}
-                                </button>
-                            </div>)
-                        }
+                        
                     </div>
                 </div>
                     

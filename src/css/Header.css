@@ -205,12 +205,55 @@
     }
 
     .Header .right .BasketShow{
-        top: 8rem; right: 2rem;
+        right: 10rem;
+        top: 7rem;
+    }
+    .Header .right .BasketShow .Products .box{
+        height: 25%;
+    }
+    .Header .right .BasketShow .Products .box .image{
+        width: 25%;
     }
    
    
 }
+@media (max-width: 800px){
+    .Header .right .BasketShow{
+        right: 5rem;
+        top: 7rem;
+    }
 
+    .Header .right .BasketShow .Products .box{
+        height: 23%;
+    }
+
+    .Header .right .BasketShow .Products .right div{
+        font-size: .9rem;
+    }
+
+    .Header .right .BasketShow .Products .right .span{
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 600px){
+    .Header .right .BasketShow{
+        right: 2rem;
+        top: 4rem;
+        width: 20rem;
+    }
+
+    .Header .right .BasketShow .Products .box{
+        height: 25%;
+    }
+    .Header .right .BasketShow .Products .box .title{
+        font-size: .6rem;
+    }
+
+    .Header .right .BasketShow .Products .box .image{
+        width: 30%;
+    }
+}
 
 
 @media (max-width: 600px){

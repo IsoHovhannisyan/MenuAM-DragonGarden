@@ -19,7 +19,7 @@ export function PorkDishes({filteredMeals,showDetail, setShowDetail, mealById, a
                         {el.price}
                     </div>
                     <div className='icons'>
-                        <i onClick={()=>favoriteMeal(el.id, el)} className={ el.favorite !== 'false'  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
+                        <i onClick={()=>favoriteMeal(el)} className={ el.favorite === "true"  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
                         <i className="fa-solid fa-cart-shopping" onClick={()=> addToBasket(el) } ></i>
                     </div>
                     

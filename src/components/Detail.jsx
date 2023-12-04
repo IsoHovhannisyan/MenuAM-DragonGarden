@@ -11,7 +11,7 @@ export default function Detail({detailRef, showDetail, setShowDetail, label, mea
                 </div>
 
                 <div className='dragonIcons'>
-                    <i onClick={()=>favoriteMeal(meal.id, meal)} className={ meal.favorite !== 'false'  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
+                    <i onClick={()=>favoriteMeal(meal)} className={ meal.favorite === "true"  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
                     <i className="fa-solid fa-xmark cursor-pointer" onClick={()=>setShowDetail(!showDetail)}></i>
                 </div>
             </div>

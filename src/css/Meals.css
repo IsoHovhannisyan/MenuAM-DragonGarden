@@ -63,6 +63,34 @@
     cursor: pointer;
 }
 
+@media (max-width: 2200px){
+    .Meals .Meal{
+        height: 330px;
+        width: 22%;
+    }
+    .Meals .Meal .image{
+        width: 100%;
+    }
+    .Meals .Meal .image img{
+        width: 100%;
+        border-radius: .5rem; 
+    }
+}
+
+@media (max-width: 2000px){
+    .Meals .Meal{
+        height: 300px;
+        width: 22%;
+    }
+}
+
+@media (max-width: 1700px){
+    .Meals .Meal{
+        height: 250px;
+        width: 22%;
+    }
+}
+
 @media (max-width: 1300px){
     .Meals .Meal{
         height: 200px;

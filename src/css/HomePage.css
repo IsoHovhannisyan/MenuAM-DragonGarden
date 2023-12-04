@@ -155,6 +155,12 @@
     font-size: .8rem;
     margin-top: 10px;
 }
+@media (max-width: 3000px){
+    .homePageImg{
+        width: 100%;
+    }
+}
+
 
 @media (max-width: 1200px){
     .Homepage{

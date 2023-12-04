@@ -68,13 +68,6 @@
         height: 380px;
         width: 22%;
     }
-    .Meals .Meal .image{
-        width: 100%;
-    }
-    .Meals .Meal .image img{
-        width: 100%;
-        border-radius: .5rem; 
-    }
 }
 
 @media (max-width: 2600px){
@@ -84,9 +77,16 @@
     }
 }
 
+@media (max-width: 2300px){
+    .Meals .Meal{
+        height: 320px;
+        width: 22%;
+    }
+}
+
 @media (max-width: 2000px){
     .Meals .Meal{
-        height: 300px;
+        height: 390px;
         width: 22%;
     }
 }

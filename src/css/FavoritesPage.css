@@ -99,25 +99,27 @@
     color:  var(--red);
 }
 
-@media (max-width: 2300px){
-    .FavoriteMeals .Meal{
-        height: 290px;
-    }
-}
+
 
 @media (max-width: 3000px){
     .FavoriteMeals .Meal{
-        height: 330px;
+        height: 360px;
     }
 }
 
 @media (max-width: 2700px){
     .FavoriteMeals .Meal{
-        height: 310px;
+        height: 335px;
     }
 }
 
 @media (max-width: 2600px){
+    .FavoriteMeals .Meal{
+        height: 320px;
+    }
+}
+
+@media (max-width: 2300px){
     .FavoriteMeals .Meal{
         height: 290px;
     }

@@ -11,19 +11,19 @@ export default function Detail({detailRef, showDetail, setShowDetail, label, mea
                 </div>
 
                 <div className='dragonIcons'>
-                    <i onClick={()=>favoriteMeal(meal)} className={ meal.favorite === "true"  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
+                    <i onClick={()=>favoriteMeal(meal)} className={ meal?.favorite === "true"  ? 'favorites fa-solid fa-heart ">': 'fa-solid fa-heart'}></i>
                     <i className="fa-solid fa-xmark cursor-pointer" onClick={()=>setShowDetail(!showDetail)}></i>
                 </div>
             </div>
             <div>
                 <div className='box m-[12px] pb-[14px] flex gap-3 border-b-2 '>
                     <div className='w-[49%]'>
-                        <img src={meal.url} alt="" className=' w-full h-full rounded-[.5rem]' />
+                        <img src={meal?.url} alt="" className=' w-full h-full rounded-[.5rem]' />
                     </div>
                     <div className=' relative'>
                         <div>
-                            <h3 className=' text-[14px]'>{meal.title}</h3>
-                            <p className='text-[12px]'>{meal.descr}</p>
+                            <h3 className=' text-[14px]'>{meal?.title}</h3>
+                            <p className='text-[12px]'>{meal?.descr}</p>
                         </div>
                         <div className=' absolute bottom-0 flex'>
                             <div>

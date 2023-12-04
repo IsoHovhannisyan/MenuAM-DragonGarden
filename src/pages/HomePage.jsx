@@ -93,68 +93,6 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
     }
     
 
-
-
-//   const favoriteMeal = async(id, product)=>{
-//     let id2 = 0;
-//     if(id <=47){
-//         if(product.favorite == 'false'){
-//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-//             ...product,
-//             "favorite": "true"
-//         });
-//         id2 = id + 47;
-//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
-//             ...FavMealOnLangChange.data,
-//             "favorite": "true"
-//         })
-//         }else{
-//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-//             ...product,
-//             "favorite": "false"
-//         });
-//         id2 = id + 47;
-//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
-//             ...FavMealOnLangChange.data,
-//             "favorite": "false"
-//         });
-        
-//         }
-//     }
-//     else{
-//         if(product.favorite == 'false'){
-//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-//             ...product,
-//             "favorite": "true"
-//         });
-//         id2 = id - 47;
-//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2,{
-//             ...FavMealOnLangChange.data,
-//             "favorite": "true"
-//         })
-//         }else{
-//             await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+ id, {
-//             ...product,
-//             "favorite": "false"
-//         });
-//         id2 = id - 47;
-//         const FavMealOnLangChange = await axios.get('https://api-storage-tiaw-pi.vercel.app/meals/'+ id2);
-//         await axios.put('https://api-storage-tiaw-pi.vercel.app/meals/'+id2,{
-//             ...FavMealOnLangChange.data,
-//             "favorite": "false"
-//         });
-        
-//         }
-//     }
-
-//     loadingMeals();
-//     mealById(id);
-    
-// }
-
 const favoriteMeal = (product)=>{
     let favoriteMealAnotherLangID = 0;
     if(product.id <= 47){
@@ -172,7 +110,7 @@ const favoriteMeal = (product)=>{
         else{
             let favoriteMealById = localStorageAllMeals.map(el=> {
                 if(product.id === el.id || favoriteMealAnotherLangID === el.id){
-                    el?.favorite = "false";
+                    el.favorite = "false";
                     return el
                 }
                 return el

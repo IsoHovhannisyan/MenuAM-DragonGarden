@@ -37,7 +37,7 @@ export function App() {
 
   return (
     <div className="App">
-      {entry ? <LoggedInHeader currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label} /> : <Header currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/> }
+      {entry ? <LoggedInHeader currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label} setEntry={setEntry} /> : <Header currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/> }
       <Routes>
         <Route path='/' element={<HomePage currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/>}/>
         <Route path='/entrance' element={<EntrancePage setEntry={setEntry} currentLanguage={currentLanguage} label={label}/>} />

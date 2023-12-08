@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import img1 from '../images/picture.jpg'
 import favoritePNG from '../images/favorite.png'
 import '../css/FavoritesPage.css';
-import axios from 'axios';
 import { useNavigate  } from 'react-router-dom';
 import DragonJpeg from '../images/dragon.jpeg';
 
@@ -20,6 +19,17 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
     
 
     let mealPrice = +(favoriteMeal?.price?.split(`${favoriteMeal?.price?.[favoriteMeal?.price?.length-1]}`)[0]);
+
+
+    useEffect(()=>{
+        window.scroll({ top: 0 })
+    },[])
+
+    useEffect(()=> {
+        loadingFavoriteMeals();
+        DisabledScroll();
+        window.addEventListener("mousedown", handleClickOutSide);
+    },[showDetail])
 
     const loadingFavoriteMeals = ()=>{
         let favMeals = JSON.parse(localStorage.getItem("meals"));
@@ -39,6 +49,7 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
                 return el
             })
             localStorage.setItem("meals", JSON.stringify(favoriteMealById));
+            console.log(JSON.parse(localStorage.getItem("meals")));
         }else{
             let favoriteMealAnotherLangID = product.id - 47;
             let favoriteMealById = localStorageFavoriteMeals.map(el=> {
@@ -62,12 +73,6 @@ export function FavoritesPage({currentLanguage, basket, setBasket, allBasketProd
         const FavMeal = favoriteMeals.filter(el=> el.id === id);
         setFavoriteMeal(FavMeal[0]);
     }
-
-    useEffect(()=> {
-        loadingFavoriteMeals();
-        DisabledScroll();
-        window.addEventListener("mousedown", handleClickOutSide);
-    },[showDetail])
 
     const DisabledScroll = ()=>{
         if(showDetail) {

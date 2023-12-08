@@ -31,14 +31,15 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
 
 
 
-
   
   let mealPrice = +(meal?.price?.split(`${meal?.price?.[meal?.price?.length-1]}`)[0]);
 
   let filteredCategories = new Set(meals.map(el=> el.category));
   let categoriesArr = [...filteredCategories];
   
-
+    useEffect(()=>{
+        window.scroll({ top: 0 })
+    },[])
 
   useEffect(()=> {
       loadingMeals();
@@ -96,7 +97,7 @@ const favoriteMeal = (product)=>{
     let favoriteMealAnotherLangID = 0;
     if(product.id <= 47){
         favoriteMealAnotherLangID = product.id + 47;
-        if(product.favorite === "false"){
+        if(product.favorite === "false" || product.favorite === false){
             let favoriteMealById = localStorageAllMeals.map(el=> {
                 if(product.id === el.id || favoriteMealAnotherLangID === el.id){
                     el.favorite = "true";
@@ -118,7 +119,7 @@ const favoriteMeal = (product)=>{
         }
     }else{
         favoriteMealAnotherLangID = product.id - 47;
-        if(product.favorite === "false"){
+        if(product.favorite === "false" || product.favorite === false){
             let favoriteMealById = localStorageAllMeals.map(el=> {
                 if(product.id === el.id || favoriteMealAnotherLangID === el.id){
                     el.favorite = "true";

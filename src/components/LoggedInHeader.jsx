@@ -4,7 +4,7 @@ import { SelectLanguage } from "./SelectLanguage";
 import logoPNG from '../images/logo.png'
 import '../css/Header.css';
 
-export default function LoggedInHeader({basket, setBasket, allBasketProducts, setAllBasketProducts,label, currentLanguage}) {
+export default function LoggedInHeader({basket, setBasket, allBasketProducts, setAllBasketProducts,label, currentLanguage, setEntry}) {
     const basketRef = useRef(null);
   const [showBasket, setShowBasket]=useState(false);
 
@@ -58,6 +58,11 @@ export default function LoggedInHeader({basket, setBasket, allBasketProducts, se
     })
   }
 
+  const logOutFunc = async()=>{
+    await window.location.reload();
+    setEntry(false);
+  }
+
 
   return (
     <div className="Header z-10">
@@ -84,7 +89,7 @@ export default function LoggedInHeader({basket, setBasket, allBasketProducts, se
       <div className="selectLanguage">
         <SelectLanguage currentLanguage={currentLanguage} />
       </div>
-      <button className='log_out'><i className="fa-solid fa-right-from-bracket"></i></button>
+      <button className='log_out' onClick={()=> logOutFunc()}><i className="fa-solid fa-right-from-bracket"></i></button>
       
          
       {

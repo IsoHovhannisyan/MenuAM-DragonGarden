@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/EntrancePage.css';
 import BurgerPng from '../images/burger.png';
 import Logo from '../images/logo.png'
@@ -11,6 +11,11 @@ export  function EntrancePage({label, setEntry}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    window.scroll({ top: 0 })
+},[])
+
 
   const handleSubmit = async(e)=>{
     e.preventDefault();

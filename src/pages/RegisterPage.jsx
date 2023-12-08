@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/RegisterPage.css'
 import BurgerPng from '../images/burger.png';
 import Logo from '../images/logo.png'
@@ -8,6 +8,23 @@ export function RegisterPage({label}) {
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [resEmail, setResEmail] = useState(false);
+  
+  const emailFunc = (value)=>{
+    setEmail(value)
+    if(value.includes('@') && value[0] !== '@' && value.split('@')[1] == "mail.ru" || value.split('@')[1] == "gmail.com"){
+      setResEmail(true)
+    }else{
+      setResEmail(false)
+    }
+  }
+
+  console.log(resEmail);
+
+  useEffect(()=>{
+    window.scroll({ top: 0 })
+},[])
+
 
 
   return (
@@ -23,8 +40,8 @@ export function RegisterPage({label}) {
                <h2 className='text-[1.6rem] font-bold  mb-[1rem]'>{label[0]?.registerPage?.[0]}</h2>
                <p className=' text-[12px] pb-2'> {phoneNumber.length === 11 ? <div>{label[0]?.registerPage?.[1]} <i className="fa-solid fa-check text-green-600"></i></div>: <div>{phoneNumber.length > 0 ? <div>{label[0]?.registerPage?.[1]} <i className="fa-solid fa-xmark text-red-600"></i></div>: label[0]?.registerPage?.[1] }</div> } </p>
                <input type="number" onChange={(e)=> setPhoneNumber(e.target.value)} placeholder="+374 55 55 55" className=' border-solid border-slate-300 pt-[3px] pb-[3px] pl-[7px] text-[12px] rounded-[.5rem] w-full mb-3'/>
-               <p className=' text-[12px] pb-2'>{label[0]?.registerPage?.[2]} </p>
-               <input type="email" placeholder={label[0]?.registerPage?.[3]} className=' border-solid border-slate-300 pt-[3px] pb-[3px] pl-[7px] text-[12px] rounded-[.5rem] w-full mb-3'/>
+               <p className=' text-[12px] pb-2'>{resEmail ? <div>{label[0]?.registerPage?.[2]} <i className="fa-solid fa-check text-green-600"></i></div>: email.length > 1 ? <div>{label[0]?.registerPage?.[2]}  <i className="fa-solid fa-xmark text-red-600"></i> </div>: label[0]?.registerPage?.[2]  } </p>
+               <input type="email" onChange={(e)=> emailFunc(e.target.value)} placeholder={label[0]?.registerPage?.[3]} className=' border-solid border-slate-300 pt-[3px] pb-[3px] pl-[7px] text-[12px] rounded-[.5rem] w-full mb-3'/>
                <p className='text-[12px] pb-2'>{label[0]?.registerPage?.[4]}</p>
                <input type="password" placeholder={label[0]?.registerPage?.[5]} className=' border-solid border-slate-300 pt-[3px] pb-[3px] pl-[7px] text-[12px] rounded-[.5rem] w-full mb-3' />
                <p className='text-[12px] pb-2'>{label[0]?.registerPage?.[6]}</p>

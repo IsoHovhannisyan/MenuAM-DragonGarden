@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { FavoritesPage } from "./pages/FavoritesPage";
 import { Header } from "./components/Header";
 import axios from "axios";
+import LoggedInHeader from "./components/LoggedInHeader";
 
 
 
@@ -14,6 +15,8 @@ import axios from "axios";
 export function App() {
 
   const currentLanguage = localStorage.getItem('menu-Language') || 'en';
+
+  const [entry, setEntry] = useState(false);
 
   const [basket, setBasket] = useState([]);
   const [allBasketProducts, setAllBasketProducts] = useState(0);
@@ -34,10 +37,10 @@ export function App() {
 
   return (
     <div className="App">
-      <Header currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label} />
+      {entry ? <LoggedInHeader currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label} /> : <Header currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/> }
       <Routes>
         <Route path='/' element={<HomePage currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/>}/>
-        <Route path='/entrance' element={<EntrancePage currentLanguage={currentLanguage} label={label}/>} />
+        <Route path='/entrance' element={<EntrancePage setEntry={setEntry} currentLanguage={currentLanguage} label={label}/>} />
         <Route path='/register' element={<RegisterPage currentLanguage={currentLanguage} label={label}/>} />
         <Route path='/favorites' element={<FavoritesPage currentLanguage={currentLanguage}  basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/>} />
       </Routes>

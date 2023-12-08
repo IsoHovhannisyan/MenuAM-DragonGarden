@@ -101,13 +101,22 @@
     
 }
 
+
+
 @media (max-width: 550px){
 
 
-    .register .form{
-        margin-right: 10rem;
+    .register{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
+    .register .form{
+        width: 80%;
+    }
+    .register .burgerpicture{
+        width: 1%;
+    }
     .register .burgerpicture img{
      display: none;
 

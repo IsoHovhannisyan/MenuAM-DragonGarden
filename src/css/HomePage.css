@@ -206,12 +206,6 @@
 
 }
 
-/* @media (max-width: 650px) {
-    .Homepage .Left .Dragon-Garden div{
-        font-size: .5rem;
-    }
-} */
-
 
 @media (max-width: 550px){
     .Homepage {
@@ -253,6 +247,17 @@
 }
 
 @media (max-width: 470px){
+
+    /* .BoxImg{
+        width: 100%;
+        overflow: hidden;
+        height:4.5rem;
+    } */
+    .BoxImg .homePageImg{
+        width:100% ;
+        height: 4rem;
+        /* overflow: hidden; */
+    }
     .Homepage .Left .Category .Categories .btn-color.btnForMediaPhone{
         margin-left: 24rem;
     }

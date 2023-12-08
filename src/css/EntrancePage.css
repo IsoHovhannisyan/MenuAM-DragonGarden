@@ -90,11 +90,17 @@ body{
 
 @media (max-width: 550px){
 
-
-    .entrance .form{
-        margin-right: 10rem;
+    .entrance{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
+    .entrance .form{
+        width: 80%;
+    }
+    .entrance .burgerpicture{
+        width: 1%;
+    }
     .entrance .burgerpicture img{
      display: none;
 

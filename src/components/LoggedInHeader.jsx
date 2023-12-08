@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState} from "react";
+import { useRef,useState,useEffect } from 'react'
 import { NavLink  as Link} from "react-router-dom";
 import { SelectLanguage } from "./SelectLanguage";
 import logoPNG from '../images/logo.png'
 import '../css/Header.css';
 
-export  function Header({basket, setBasket, allBasketProducts, setAllBasketProducts,label, currentLanguage}) {
-
-  const basketRef = useRef(null);
+export default function LoggedInHeader({basket, setBasket, allBasketProducts, setAllBasketProducts,label, currentLanguage}) {
+    const basketRef = useRef(null);
   const [showBasket, setShowBasket]=useState(false);
+
 
   const total = basket?.reduce((sum,el) => sum+el?.price?.split(`${el.price[el.price.length-1]}`)[0]*el?.quantity, 0)
 
@@ -51,7 +51,7 @@ export  function Header({basket, setBasket, allBasketProducts, setAllBasketProdu
     setAllBasketProducts(allBasketProducts-1);
     setBasket(newBasket);
 
-     basket.filter(el=> {
+    basket.filter(el=> {
       if(el?.quantity === 0) {
         return deleteProduct(id);
       }
@@ -69,9 +69,6 @@ export  function Header({basket, setBasket, allBasketProducts, setAllBasketProdu
 
     <div className="right">
 
-      <div className="ForMedia"><Link  to='/entrance' className="entrance">{label[0]?.header?.[1]}</Link></div>
-      <Link to='/register' className="register">{label[0]?.header?.[2]}</Link>
-
       <div className="Basket relative" onClick={()=>setShowBasket(!showBasket)}>
         <div>
           <i className="fa-solid fa-cart-shopping"></i>
@@ -87,6 +84,7 @@ export  function Header({basket, setBasket, allBasketProducts, setAllBasketProdu
       <div className="selectLanguage">
         <SelectLanguage currentLanguage={currentLanguage} />
       </div>
+      <button className='log_out'><i className="fa-solid fa-right-from-bracket"></i></button>
       
          
       {

@@ -29,7 +29,6 @@ export  function HomePage({currentLanguage, basket, setBasket, allBasketProducts
   const [quantity, setQuantity] = useState(1);
   const detailRef = useRef();
 
-  console.log(localStorageAllMeals[0]?.favorite);
 
 
 
@@ -205,7 +204,10 @@ const favoriteMeal = (product)=>{
 
   return (
     <div>
-     <img src={PictureJpg} alt="" className='homePageImg'/>
+        <div className='BoxImg'>
+            <img src={PictureJpg} alt="" className='homePageImg'/>
+        </div>
+     
      <div className='Homepage'>
                 
                 <div className='Left'>

@@ -53,7 +53,7 @@
     margin-right: 1rem;
 }
 
-.Header .right .register, .Basket, .Heart{
+.Header .right .register, .Basket, .Heart, .log_out{
     background-color: var(--lightred);
     padding: .5rem 1rem;
     border-radius: .5rem;
@@ -236,7 +236,16 @@
     }
 }
 
+
+
 @media (max-width: 600px){
+
+    .Header{
+        height: 8rem;
+        justify-content: left;
+        align-items: center;
+    }
+
     .Header .right .BasketShow{
         right: 2rem;
         top: 4rem;
@@ -246,19 +255,13 @@
     .Header .right .BasketShow .Products .box{
         height: 25%;
     }
+    
     .Header .right .BasketShow .Products .box .title{
         font-size: .6rem;
     }
 
     .Header .right .BasketShow .Products .box .image{
         width: 30%;
-    }
-}
-
-
-@media (max-width: 600px){
-    .Header{
-        height: 8rem;
     }
 
     .Header .left .Logo{
@@ -275,7 +278,7 @@
         padding-right: 1rem;
     }
 
-    .Header .right .entrance, .register, .Heart, .Basket, .selectLanguage{
+    .Header .right .register, .Heart, .Basket, .selectLanguage, .log_out{
         position: absolute;
     }
 
@@ -289,14 +292,24 @@
         right: 5rem;
     }
 
-    .Header .right .entrance {
-        left: 1rem;
-        bottom: 1.5rem;
-        padding: .5rem 0;
+    .Header .right .ForMedia {
+        width: 100%;
+        height: 100%;
+        padding: 2.6rem 1.5rem 1rem 1rem;
+    }
+
+    .Header .right .ForMedia .entrance{
+        width: 3.5rem;
+        /* height: 2rem; */
     }
 
     .Header .right .register {
         left: 5rem;
+        bottom: 1.5rem;
+    }
+
+    .Header .right .log_out{
+        left: 1rem;
         bottom: 1.5rem;
     }
     .Header .right .selectLanguage {
@@ -305,8 +318,7 @@
     }
 
     .Header .left .Headerinput::placeholder{
-       font-size: .7rem; 
-       
+       font-size: .7rem;      
     }
 
    

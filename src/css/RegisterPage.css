@@ -1,4 +1,13 @@
 
+.GoToHomePageBtn{
+    font-size: .9rem;
+    padding: .3rem;
+    color: white ;
+    background-color: green;
+    width: 35%;
+    border-radius: 1rem;
+}
+
 .register{
     display: flex;
     justify-content: left;
@@ -105,6 +114,9 @@
 
 @media (max-width: 550px){
 
+    .btn{
+       width: 50%; 
+    }
 
     .register{
         display: flex;

@@ -24,7 +24,7 @@ export  function EntrancePage({label, setEntry}) {
       password,
     }
     try{
-        const User = await axios.post("http://localhost:8000/api/user/login", LoginUser,
+        const User = await axios.post("https://menuam-backend-register-and-login.vercel.app/api/user/login", LoginUser,
         {
           headers: {'Content-Type': 'application/json'},
           withCredentials: true
@@ -37,6 +37,7 @@ export  function EntrancePage({label, setEntry}) {
         setEntry(true);
 
         navigate('/');
+        localStorage.setItem('entry', true);
  
     }catch(err){
       console.log(err?.response?.data?.message);

@@ -58,9 +58,10 @@ export default function LoggedInHeader({basket, setBasket, allBasketProducts, se
     })
   }
 
-  const logOutFunc = async()=>{
-    await window.location.reload();
+  const logOutFunc = ()=>{
     setEntry(false);
+    localStorage.setItem('entry', false);
+    window.location.reload();
   }
 
 

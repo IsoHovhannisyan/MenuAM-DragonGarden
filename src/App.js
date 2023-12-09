@@ -16,7 +16,7 @@ export function App() {
 
   const currentLanguage = localStorage.getItem('menu-Language') || 'en';
 
-  const [entry, setEntry] = useState(false);
+  const [entry, setEntry] = useState(JSON.parse(localStorage.getItem('entry')) || false);
 
   const [basket, setBasket] = useState([]);
   const [allBasketProducts, setAllBasketProducts] = useState(0);
@@ -40,8 +40,8 @@ export function App() {
       {entry ? <LoggedInHeader currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label} setEntry={setEntry} /> : <Header currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/> }
       <Routes>
         <Route path='/' element={<HomePage currentLanguage={currentLanguage} basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/>}/>
-        <Route path='/entrance' element={<EntrancePage setEntry={setEntry} currentLanguage={currentLanguage} label={label}/>} />
-        <Route path='/register' element={<RegisterPage currentLanguage={currentLanguage} label={label}/>} />
+        <Route path='/entrance' element={<EntrancePage setEntry={setEntry} label={label}/>} />
+        <Route path='/register' element={<RegisterPage label={label} setEntry={setEntry}/>} />
         <Route path='/favorites' element={<FavoritesPage currentLanguage={currentLanguage}  basket={basket} setBasket={setBasket} allBasketProducts={allBasketProducts} setAllBasketProducts={setAllBasketProducts} label={label}/>} />
       </Routes>
       <Footer label={label}/>

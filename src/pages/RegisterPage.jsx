@@ -84,7 +84,6 @@ export function RegisterPage({label, setEntry}) {
           withCredentials: true
         });
         toast.success('Success', {id: 1});
-
         setRegisteredMsg(true);
         setEntry(true);
         localStorage.setItem('entry', true);
@@ -92,6 +91,7 @@ export function RegisterPage({label, setEntry}) {
 
 
       }catch(err){
+        toast.error('Error', {id: 1});
         if(err.response.status == 409){
           setErrMessage(label[0]?.errorMessage?.[0]);
           setResErrMessage(true)
